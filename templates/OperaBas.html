@@ -1,0 +1,17 @@
+{% extends "layout.html" %} {%block content %}
+<h1>calcular</h1>
+<form action="/resultado" method="POST">
+  <label>N1:</label>
+  <input type="text" name="n1" /><br />
+  <label>N2:</label>
+  <input type="text" name="n2" /><br />
+  <input type="radio" name="tipo" value="1" /> suma <br />
+  <input type="radio" name="tipo" value="2" /> resta <br />
+  <input type="radio" name="tipo" value="3" /> multiplicacion <br />
+  <input type="radio" name="tipo" value="4" /> division <br />
+  <input type="radio" name="tipo" value="5" /> division exacta <br />
+  <input type="radio" name="tipo" value="6" /> potencia <br />
+
+  <input type="submit" />
+</form>
+{%endblock%}
