@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{%block content %}
+{% import "_macros.html" as
+macros %}
+<div class="container-fluid">
+  <form action="/distancia" method="POST" novalidate>
+    <div class="row">
+      <div class="col-span">
+        {{macros.camposNuevos(form.x1,
+        class="form-control")}}
+      </div>
+      <div class="col-span">
+        {{macros.camposNuevos(form.x2,
+        class="form-control")}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-span">
+        {{macros.camposNuevos(form.y1,
+        class="form-control")}}
+      </div>
+      <div class="col-span">
+        {{macros.camposNuevos(form.y2,
+        class="form-control")}}
+      </div>
+    </div>
+    <input type="submit" id="btn1" value="Enviar">
+  </form>
+
+  <div>
+    <h1>Resultado: {{dist}}</h1>
+  </div>
+</div>
+{%endblock%}

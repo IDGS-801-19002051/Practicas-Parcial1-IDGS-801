@@ -1,11 +1,26 @@
 from flask import Flask, render_template, request
-
+import forms
+import math
 app=Flask(__name__)
 
 
 @app.route("/")
 def operas():
   return render_template("OperaBas.html")
+
+@app.route("/distancia", methods=["GET","POST"])
+def distancia():
+  distancia_clase=forms.UserForm(request.form)
+  if request.method=="POST":
+    dis1=distancia_clase.x1.data
+    dis2=distancia_clase.x2.data
+    dis3=distancia_clase.y1.data
+    dis4=distancia_clase.y2.data
+    dist=math.sqrt(((dis2-dis1)** 2) + ((dis4-dis3)** 2))
+    print(dist)
+    
+  return render_template("distancia.html", form=distancia_clase, dist=dist)
+
 
 @app.route("/resultado", methods=["GET","POST"])
 def result():
