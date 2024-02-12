@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{%block content %}
+{% import "_macros.html" as
+macros %}
+<div class="container-fluid">
+  <form action="/resistencia" method="POST" novalidate>
+    <div class="row">
+      <div class="col-span-3">
+        {{macros.camposNuevos(form.val1,
+        class="form-control")}}
+      </div>
+      <div class="col-span-3">
+        {{macros.camposNuevos(form.val2,
+        class="form-control")}}
+      </div>
+      <div class="col-span-3">
+        {{macros.camposNuevos(form.val3,
+        class="form-control")}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-span-5">
+        {{macros.camposNuevos(form.val4,
+        class="form- ")}}
+      </div>
+    </div>
+    <input type="submit" id="btn1" value="Enviar">
+  </form>
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered">
+        <tr>
+          <td>color 1</td>
+          <td>color 2</td>
+          <td>color 3</td>
+          <td>tolerancia</td>
+          <td>valor</td>
+          <td>valor maximo</td>
+          <td>valor minimo</td>
+        </tr>
+        <tr>
+          <td bgcolor="{{bg1}}">{{val1}}</td>
+          <td bgcolor="{{bg2}}">{{val2}}</td>
+          <td bgcolor="{{bg3}}">{{val3}}</td>
+          <td bgcolor="{{bg4}}">{{val4}}</td>
+          <td>{{valt}}</td>
+          <td>{{valmax}}</td>
+          <td>{{valmin}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+{%endblock%}
