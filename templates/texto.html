@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{%block content %}
+{% import "_macros.html" as
+macros %}
+<div class="container">
+  <form action="/textos" method="POST" novalidate>
+    <div class="row">
+      <div class="col-span-6">
+        <div class="row">
+          {{macros.camposNuevos(form.text1,
+          class="form-control")}}
+        </div>
+        <div class="row">
+          {{macros.camposNuevos(form.text2,
+          class="form-control")}}
+        </div>
+        <div class="row-centered">
+          <button type="submit">registro</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <form action="/textosb" method="POST" novalidate>
+    <div class="row">
+      <div class="col-span-6">
+        <div class="row">
+          {{macros.camposNuevos(form2.busc,
+          class="form-control")}}
+        </div>
+        <div class="row">
+          {{macros.camposNuevos(form2.rad,
+          class="form-control")}}
+        </div>
+        <div class="row-centered">
+          <button type="submit">Buscar</button>
+        </div>
+        <div class="row">
+          <h1>Resultado: {{val}}</h1>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{%endblock%}

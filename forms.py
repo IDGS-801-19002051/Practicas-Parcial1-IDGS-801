@@ -1,5 +1,6 @@
 from wtforms import Form
-from wtforms import StringField, FloatField, SelectField, RadioField
+from wtforms import StringField, FloatField, SelectField, RadioField, Field
+from wtforms import validators
 
 class UserForm(Form):
   x1=FloatField("x1")
@@ -15,3 +16,12 @@ class ResisForm(Form):
         (5,'Oro'), (10,'Plata')],
         default=1, coerce=int)
   
+class TextForm1(Form):
+  text1=StringField("Ingles",[validators.DataRequired("El campo es requerido")])
+  text2=StringField("Español",[validators.DataRequired("El campo es requerido")])
+  
+class TextForm2(Form):
+  busc=StringField("Leer", [validators.DataRequired("El campo es requerido")])
+  rad=RadioField('', [validators.DataRequired("El campo es requerido")] , choices=[
+    (1,'Ingles'), (2,'Español')],
+                 default=1, coerce=int, )

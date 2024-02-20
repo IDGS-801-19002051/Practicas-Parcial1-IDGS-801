@@ -1,12 +1,45 @@
 from flask import Flask, render_template, request
 import forms
 import math
+from io import open
 app=Flask(__name__)
 
 
 @app.route("/")
 def operas():
   return render_template("OperaBas.html")
+
+@app.route("/textos", methods=["GET","POST"])
+def textos():
+  texto_clase=forms.TextForm1(request.form)
+  texto_clase2=forms.TextForm2(request.form)
+  
+  if request.method=="POST" and texto_clase.validate():
+    val1=texto_clase.text1.data
+    val2=texto_clase.text2.data
+    arg=val1+" "+val2+"\n"
+    archivo1=open("archivo.txt","a")
+    archivo1.write(arg)
+    archivo1.close()
+  return render_template("texto.html",form=texto_clase, form2=texto_clase2)
+
+@app.route("/textosb", methods=["GET","POST"])
+def textosb():
+  texto_clase=forms.TextForm1(request.form)
+  texto_clase2=forms.TextForm2(request.form)
+  val = "valor no encontrado"
+  sep = ""
+  if request.method=="POST" and texto_clase2.validate():
+    val1=texto_clase2.busc.data
+    val2=texto_clase2.rad.data
+    archivo1=open("archivo.txt","r")
+    for line in archivo1.readlines():
+      if line.find(val1) != -1:
+        sep = line.split(sep=" ")
+        print(sep[val2-1])
+        val = sep[val2-1]
+    archivo1.close()
+  return render_template("texto.html",form=texto_clase, form2=texto_clase2, val=val)
 
 @app.route("/resistencia", methods=["GET","POST"])
 def resistencia(): 

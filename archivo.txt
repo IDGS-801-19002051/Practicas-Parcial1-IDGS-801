@@ -1,0 +1,7 @@
+shoe zapato
+table mesa
+ball pelota
+red rojo
+green verde
+keyboard teclado
+yellow amarillo
